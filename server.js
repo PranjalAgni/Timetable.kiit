@@ -6,9 +6,10 @@ const path = require('path');
 const port = 5000 || process.env.PORT;
 
 app.use(cors());
+app.use(express.json());
 app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '/dist')));
-app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function(req, res) {
   console.log('request hit...');
